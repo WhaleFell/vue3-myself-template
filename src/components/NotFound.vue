@@ -13,12 +13,14 @@ import { useRouter } from 'vue-router'
 const timeout = ref<number>(5)
 const router = useRouter()
 
-setInterval(() => {
+const skip = setInterval(() => {
   timeout.value--
   if (timeout.value <= 0) {
     router.push({
       name: 'main',
     })
+    clearInterval(skip)
+    return
   }
 }, 1000)
 </script>
