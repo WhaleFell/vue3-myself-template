@@ -1,11 +1,5 @@
 <template>
-  <el-menu
-    active-text-color="#ffd04b"
-    background-color="#545c64"
-    class="el-menu-vertical-demo"
-    default-active="2"
-    text-color="#fff"
-  >
+  <el-menu default-active="1" class="el-menu-demo" mode="horizontal">
     <router-link :to="{ name: 'main' }" custom v-slot="{ navigate }">
       <el-menu-item index="1" @click="navigate">
         <el-icon><icon-menu /></el-icon>
@@ -27,9 +21,11 @@
         <el-icon>
           <setting />
         </el-icon>
-        <span>设置</span>
+        <span>系统设置</span>
       </el-menu-item>
     </router-link>
+
+    <h2>供需机器人后台管理系统</h2>
   </el-menu>
 </template>
 

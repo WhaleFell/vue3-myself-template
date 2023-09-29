@@ -6,7 +6,6 @@ import type { RouteRecordRaw } from 'vue-router'
 
 // 使用路由项目类型声明一个路由数组
 const routes: RouteRecordRaw[] = [
-
   {
     path: '/main/',
     name: 'main',

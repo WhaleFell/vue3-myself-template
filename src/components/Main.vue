@@ -1,43 +1,43 @@
 <template>
-  <el-progress type="dashboard" :percentage="percentage" :color="colors" />
-  <el-progress type="dashboard" :percentage="percentage2" :color="colors" />
-  <el-button-group>
-    <el-button :icon="Minus" @click="decrease" />
-    <el-button :icon="Plus" @click="increase" />
-  </el-button-group>
+  <h1>欢迎进入供需机器人管理后台</h1>
+  <h2>总申请支付金额:{{ pay_total_amount }}</h2>
+  <h2>全部用户的总金额:{{ user_total_amount }}</h2>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { Minus, Plus } from '@element-plus/icons-vue'
+import { ref, onMounted } from 'vue'
+import { service } from '../apis'
 
-const percentage = ref(10)
-const percentage2 = ref(0)
+const pay_total_amount = ref<number>(0)
+const user_total_amount = ref<number>(0)
 
-const colors = [
-  { color: '#f56c6c', percentage: 20 },
-  { color: '#e6a23c', percentage: 40 },
-  { color: '#5cb87a', percentage: 60 },
-  { color: '#1989fa', percentage: 80 },
-  { color: '#6f7ad3', percentage: 100 },
-]
-
-const increase = () => {
-  percentage.value += 10
-  if (percentage.value > 100) {
-    percentage.value = 100
-  }
+const getUserAmount = () => {
+  service
+    .get('/user/get_user_total_amount/')
+    .then((response) => {
+      user_total_amount.value = Number(response.data)
+    })
+    .catch(function (error) {
+      // 请求失败处理
+      console.log(error)
+    })
 }
-const decrease = () => {
-  percentage.value -= 10
-  if (percentage.value < 0) {
-    percentage.value = 0
-  }
+
+const getPaysAmount = () => {
+  service
+    .get('/pay/total_amount/')
+    .then((response) => {
+      pay_total_amount.value = Number(response.data)
+    })
+    .catch(function (error) {
+      // 请求失败处理
+      console.log(error)
+    })
 }
+
 onMounted(() => {
-  setInterval(() => {
-    percentage2.value = (percentage2.value % 100) + 10
-  }, 500)
+  getUserAmount()
+  getPaysAmount()
 })
 </script>
 

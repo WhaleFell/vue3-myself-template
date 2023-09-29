@@ -1,16 +1,11 @@
 <template>
   <el-container>
     <el-header>
-      <h1 style="text-align: center">后台管理系统</h1>
+      <Aside></Aside>
     </el-header>
-    <el-container>
-      <el-aside width="200px">
-        <Aside></Aside>
-      </el-aside>
-      <el-main>
-        <router-view />
-      </el-main>
-    </el-container>
+    <el-main>
+      <RouterView></RouterView>
+    </el-main>
   </el-container>
 </template>
 

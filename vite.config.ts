@@ -9,21 +9,54 @@ import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base:"/",
+  base: "/",
 
   plugins: [
     vue(),
-      AutoImport({
-        resolvers: [ElementPlusResolver()],
-      }),
-      Components({
-        resolvers: [ElementPlusResolver()],
-      }),
-    ],
+    // Ele UI 按需导入
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ],
 
-    resolve: {
-      alias: {
-        '@src': resolve(__dirname,'src'), // 源码根目录
-      },
+  resolve: {
+    alias: {
+      '@src': resolve(__dirname, 'src'), // 源码根目录
     },
+  },
+
+  server: {
+    host: '0.0.0.0',
+    port: 8991,
+    // 是否开启 https
+    https: false,
+    // 设置反向代理，跨域
+    proxy: {
+      '/user/': {
+        // 后台地址
+        target: 'http://usa1.whaleluo.top:8456/',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\//, '')
+      },
+      '/pay/': {
+        // 后台地址
+        target: 'http://usa1.whaleluo.top:8456/',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\//, '')
+      },
+      '/config/': {
+        // 后台地址
+        target: 'http://usa1.whaleluo.top:8456/',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\//, '')
+      },
+    }
+  },
+
+
+
+
 })
