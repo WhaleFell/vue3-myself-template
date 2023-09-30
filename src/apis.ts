@@ -1,4 +1,4 @@
-import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import type { AxiosInstance } from "axios";
 import axios from "axios";
 
 import { ElMessage } from 'element-plus'

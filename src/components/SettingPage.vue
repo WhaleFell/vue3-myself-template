@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { service } from '../apis'
 // {
 //   "admin_password": "admin",

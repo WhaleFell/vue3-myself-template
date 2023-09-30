@@ -9,7 +9,7 @@ const router = createRouter({
 
 
 // 进入路由之前
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
   const { title } = to.meta
   document.title = title as string || '默认标题'
 
