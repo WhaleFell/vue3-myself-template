@@ -22,14 +22,15 @@
     "noFallthroughCasesInSwitch": true,
 
     "baseUrl": "/",
-
     // 路径别名
     "paths": {
       "@/*": ["src/*"]
     },
 
     // elememt ui support Volar extansion
-    "types": ["node", "element-plus/global"]
+    // https://github.com/vuejs/core/discussions/9002
+    // add "vite/client" to fix env error
+    "types": ["node", "element-plus/global", "vite/client"]
   },
 
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

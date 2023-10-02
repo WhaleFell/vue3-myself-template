@@ -12,7 +12,8 @@ import { ElMessage } from 'element-plus'
  */
 
 export const service: AxiosInstance = axios.create({
-  baseURL: 'http://usa1.whaleluo.top:8456/',
+  // baseURL: 'http://usa1.whaleluo.top:8456/',
+  baseURL: import.meta.env.VITE_API_URL,
   timeout: 10 * 1000, // 请求超时时间
   headers: { "Content-Type": "application/json;charset=UTF-8" }
 });
