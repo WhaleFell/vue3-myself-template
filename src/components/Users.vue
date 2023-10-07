@@ -32,33 +32,7 @@
 import { ref, onMounted } from 'vue'
 import { service } from '../apis'
 import { ElMessageBox } from 'element-plus'
-
-export interface Pay {
-  id: number
-  amount: number
-  status: number
-  pay_at: Date
-  user_id: string
-  trade_id: string
-}
-
-export interface Msg {
-  id: number
-  send_at: Date
-  user_id: string
-  content: string
-}
-
-export interface User {
-  id: number
-  amount: number
-  create_at: Date
-  user_id: string
-  username: string
-  count: number
-  pays: Pay[]
-  msgs: Msg[]
-}
+import { User } from '../apiModel'
 
 const get = () => {
   service

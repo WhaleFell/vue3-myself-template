@@ -1,6 +1,8 @@
 import type { AxiosInstance } from "axios";
 import axios from "axios";
 
+// 全局设置 axios 发送请求带上cookie
+axios.defaults.withCredentials = true
 import { ElMessage } from 'element-plus'
 
 
@@ -18,6 +20,16 @@ export const service: AxiosInstance = axios.create({
   headers: { "Content-Type": "application/json;charset=UTF-8" }
 });
 
+
+// // 添加请求拦截器
+// service.interceptors.request.use(function (config) {
+//   // 在发送请求之前做些什么
+//   // 检测是否
+//   return config;
+// }, function (error) {
+//   // 对请求错误做些什么
+//   return Promise.reject(error);
+// });
 
 // Add a response interceptor
 service.interceptors.response.use(function (response) {

@@ -1,5 +1,10 @@
 <template>
-  <h1>欢迎进入供需机器人管理后台</h1>
+  <ElAlert show-icon type="success" closable>
+    <template #title> 系统提示 </template>
+    <template #default>
+      欢迎使用 TG 机器人供需管理系统,这是一条系统提示,请留心
+    </template>
+  </ElAlert>
   <h2>总申请支付金额:{{ pay_total_amount }}</h2>
   <h2>全部用户的总金额:{{ user_total_amount }}</h2>
 </template>

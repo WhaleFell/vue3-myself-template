@@ -1,16 +1,9 @@
 <template>
-  <el-container>
-    <el-header>
-      <Aside></Aside>
-    </el-header>
-    <el-main>
-      <RouterView></RouterView>
-    </el-main>
-  </el-container>
+  <DashBoard></DashBoard>
 </template>
 
 <script setup lang="ts">
-import Aside from './components/Aside.vue'
+import DashBoard from './components/DashBoard.vue'
 </script>
 
 <style scoped></style>
