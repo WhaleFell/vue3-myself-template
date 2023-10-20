@@ -13,8 +13,11 @@
     <el-form-item label="支付的 USDT 地址">
       <el-input v-model="FormConfig.usdt_token" />
     </el-form-item>
-    <el-form-item label="发送一次耗费的 USDT">
+    <el-form-item label="发送一次普通供需耗费的 USDT">
       <el-input v-model="FormConfig.once_cost" />
+    </el-form-item>
+    <el-form-item label="发送一次图文供需耗费的 USDT">
+      <el-input v-model="FormConfig.pic_once_cost" />
     </el-form-item>
     <el-form-item label="充值 USDT 的倍率(比如2倍:冲10就到账20)">
       <el-input v-model="FormConfig.multiple" />
@@ -47,6 +50,20 @@ import { ref, onMounted } from 'vue'
 import { service } from '../apis'
 import { Config } from '../apiModel'
 
+// {
+//   "admin_password": "admin",
+//   "provide_desc": "项目名称：\n项目介绍：\n价格：\n联系人：\n频道：【选填/没频道可以不填】\n",
+//   "require_desc": "需求：\n预算：\n联系人：\n频道：【选填/没频道可以不填】\n",
+//   "send_content": "【用户内容】\n\n该用户累计发布 【发表次数】 次，当前时间：【当前时间】\n",
+//   "channel_ids": "-1001558383712,",
+//   "usdt_token": "TTV9EnFgcZ8WXvE3YPqwz4VYoQzzLLLLLL",
+//   "description": "发布规则:\n\n**💥本系统支持普通供需和图文供需：💥**\n普通供需一次消耗 【普通供需消耗USDT】 USDT \n图文供需一次消耗【图文供需消耗USDT】USDT\n\n发布付费广告严格要求如下\n1：行数限制15行内【超过百分百不通过】\n2：禁止发布虚假内容，禁止诈骗欺骗用户🚫\n3：无需备注累计广告次数，机器人会自动统计\n\n请编写好广告词，点击下方【📝自助发布】\n\n供给频道： https://t.me/gcccaasas\n",
+//   "once_cost": 2,
+//   "pic_once_cost": 5,
+//   "ban_words": "做爱,死,数学,地理,生物,幼女,黄颖宝,蔡徐坤,陈立农,鸡巴",
+//   "multiple": 1
+// }
+
 let FormConfig = ref<Config>({
   admin_password: 'admin',
   provide_desc: 'string',
@@ -56,6 +73,7 @@ let FormConfig = ref<Config>({
   usdt_token: 'string',
   description: 'string',
   once_cost: 0,
+  pic_once_cost: 0,
   ban_words: '担保,供需',
   multiple: 1,
 })

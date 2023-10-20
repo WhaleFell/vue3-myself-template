@@ -47,6 +47,7 @@ export interface Config {
   usdt_token: string
   description: string
   once_cost: number
+  pic_once_cost: number
   ban_words: string
   multiple: number
 }
